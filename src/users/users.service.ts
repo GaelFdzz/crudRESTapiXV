@@ -31,6 +31,12 @@ export class UsersService {
         });
     }
 
+    async deleteUser(id: number){
+        return await this.prisma.users.delete({
+            where:{id}
+        })
+    }
+
     async addInvitado(user_id: number, data: Invitados) {
         const invitado = await this.prisma.invitados.create({
             data: {

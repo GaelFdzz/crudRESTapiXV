@@ -26,5 +26,5 @@ model Invitados {
   nombre String
   user_id Int
 
-  invitado Users @relation(fields: [user_id], references: [id])
+  invitado Users @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
