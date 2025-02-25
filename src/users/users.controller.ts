@@ -15,6 +15,9 @@ export class UsersController {
     //Obtener usuario por id
     @Get('/:id')
     async getUserById(@Param('id') id: number) {
+        const cantidadInvitados = await this.usersService.getNumInvitados(Number(id));
+        const acompanantes = await this.usersService.getAcompanantes(Number(id));
+        
         return await this.usersService.getUserById(Number(id));
     }
 
@@ -50,6 +53,6 @@ export class UsersController {
     //Obtener invitados del usuario
     @Get('/:user_id/invitados')
     async getInvitationsByUserId(@Param('user_id') user_id: number) {
-        return await this.usersService.getInvitationsByUserId(user_id);
+        return await this.usersService.getInvitationsByUserId(Number(user_id));
     }
 }
